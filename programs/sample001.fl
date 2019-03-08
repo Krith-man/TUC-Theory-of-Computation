@@ -1,0 +1,11 @@
+(* 
+	Sample program 
+*)
+
+program foo;
+
+begin
+	writeString('Hello world');
+	writeString('\n')
+end.
+

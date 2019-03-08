@@ -1,0 +1,90 @@
+@defmacro N 100
+
+program big;
+
+    type
+        string = array of char;
+
+	@defmacro M 200
+	@defmacro L 300
+
+    var 
+		i, j, k, l, m, n: integer;
+		mystring: string;
+		firstArray, secondArray : array [L][M][N] of real;
+
+    procedure nl();
+    begin
+		writeString('\n')
+	end;
+
+    (* This is a rather silly function *)
+    procedure compute(n: integer; k:integer);
+
+        function cube(i: integer): integer;
+        begin
+            result := i * i * i;
+            return
+        end;
+		
+		procedure computeWithForLoops();
+		var sum: integer;
+		begin
+			sum := 0;
+			for l := 0 to L do
+			begin
+				for m := M downto 0 do
+				begin
+					sum := sum + cube(M) / cube(M)
+				end;
+				if l mod N = 0 then 
+					writeString(".")
+			end;
+			nl();
+			mystring := 'Sum = ';
+			writeString(mystring);
+			writeInteger(sum);
+			nl();
+			if sum mod 2 = 0 then
+				writeString("Sum is Even")
+			else
+				writeString("Sum is Odd");
+			nl();
+			if sum * 2 mod 3 = 0 then
+				writeString('Sum*2 is divisible with "3"')
+			else if sum *2 mod 3 = 1 then
+				writeString('Sum*2 has a remainder of "1" when divided with "3"')
+			else
+				writeString('Sum*2 has a remainder of "2" when divided with "3"');
+			nl()
+		end;
+
+    begin
+		computeWithForLoops()
+		
+    end;
+
+    function promptForInteger(prompt: string) : integer;
+    begin
+        writeString(prompt);
+        result := readInteger();
+        writeString('You typed: ');
+        writeInteger(result); 
+        nl();
+        return
+    end;
+
+(* Here you can see some useless lines.
+** Just for testing the multi-line comments ...
+*)
+
+begin
+    k := promptForInteger('Type a number: ');
+    i := promptForInteger('Type another number: ');
+    compute(k,i); (* Here you can see some dummy comments! *)
+	goto myLabel;
+	mystring := "This should not be shown";
+	writeString(mystring);
+	myLabel: mystring := "Goto Works Fine!";
+	writeString(mystring)
+end.

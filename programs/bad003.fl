@@ -1,0 +1,11 @@
+program bad;
+
+
+begin
+
+   writeString('Hello world');
+
+   (* A lexical error with string quotes *)
+   writeString('\n")
+
+end.

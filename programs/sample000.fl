@@ -1,0 +1,4 @@
+program useless;
+begin
+	myarray[i] := 0
+end.

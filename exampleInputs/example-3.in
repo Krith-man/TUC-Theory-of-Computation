@@ -1,0 +1,26 @@
+i:=0
+abc:=-5.
+e10 := 0.1
+i4i := -6.3e-4
+i + abc
+jj1 := 4.e+2
+if (abc) 
+	i:= -1
+else 
+	i:=1
+123 := .1e-19
+'a'
+"M"
+"\n"
+'\''
+"abc"
+'Route 66'
+"Hello world!\n" "Item:\t\"Laser Printer\"\nPrice:\t$142\n"
+(this_is_my_custom_type_casting)
+(* 	
+	THIS IS MY NEW MULTILINE comment
+	TESTING SHOULD BE DONE
+*)
+(* MULTILINE COMMENT ON A SINGLE LINE *)
+//
+// this is a line comment

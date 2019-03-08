@@ -1,0 +1,23 @@
+// A useless piece of FL code
+@defmacro N 100
+program useless;
+	var i, k: integer;
+	procedure add(n: integer; k:integer);
+		var j: integer;
+		function cube(i: integer): integer;
+		begin
+			result := i * i * i;
+			return
+		end;
+	begin
+		j := (integer) (N - n) + cube(k);
+		writeInteger(j)
+	end;
+(* Here you can see some useless lines.
+** Just for testing the multi-line comments ...
+*)
+begin
+	k := readInteger();
+	i := readInteger();
+	add(k,i) // Here you can see some dummy comments!
+end.

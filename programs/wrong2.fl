@@ -1,0 +1,113 @@
+(*  Passing around functions  *)
+
+program function_fun;
+@defmacro N 100
+@defmacro M 200
+@defmacro L 300
+type
+   intfunc = function(n: integer) : integer;
+   string = array of char;
+
+var 
+	mystring : string;
+	firstArray, secondArray : array [L][M] of real;
+
+procedure nl();
+begin
+	writeString('\n')
+end;
+
+function fibonacci(n:integer) : integer;
+var
+	f0, f1, temp: integer;
+begin
+	f0:=0;
+	f1:=1;
+	while n>1 do
+		begin
+			temp := f1;
+			f1 := f1+f0;
+			f0 := temp;
+			n := n-1; (* THIS IS AN ERROR - Semicolon should not be used *)
+		end;
+	result := f1;
+	return
+end;
+
+function factorial(n:integer) : integer;
+var
+	fac, i: integer;
+begin
+	fac := 1; 
+	for i:=n downto 1 do fac:=i*fac;
+	result := fac;
+	return
+end;
+
+procedure eval(prompt: string; f: intfunc; val: integer);
+begin
+	writeString(prompt); 
+	writeString('('); writeInteger(val); writeString(')=');
+	writeInteger(f(val));
+	writeString('\n')
+end;
+
+procedure compute();
+
+	function cube(i: integer): integer;
+	begin
+		result := i * i * i;
+		return
+	end;
+	
+	procedure computeWithWhileLoops();
+	var sum, l, m: integer;
+	begin
+		sum := 0;
+		l := 0;
+		while l <= L do
+		begin
+			m := 0;
+			repeat
+			begin
+				sum := sum + cube(M) / cube(M);
+				firstArray[l][m] := l;
+				secondArray[l][m] := m;
+				m := m +1
+			end
+			until m <= M;
+			if l mod N = 0 then 
+					writeString(".");
+			l := l+1
+		end;
+		nl();
+		mystring := 'Sum = ';
+		writeString(mystring);
+		writeInteger(sum);
+		nl();
+		if sum mod 2 = 0 then
+			writeString("Sum is Even")
+		else
+			writeString("Sum is Odd");
+		nl();
+		if sum * 2 mod 3 = 0 then
+			writeString('Sum*2 is divisible with "3"')
+		else if sum *2 mod 3 = 1 then
+			writeString('Sum*2 has a remainder of "1" when divided with "3"')
+		else
+			writeString('Sum*2 has a remainder of "2" when divided with "3"');
+		nl()
+	end;
+
+	begin
+		computeWithWhileLoops()	
+	end;
+
+begin
+	eval('Fibonacci', fibonacci, 5);
+	eval('factorial', factorial, 5);
+	compute()
+end.
+
+
+
